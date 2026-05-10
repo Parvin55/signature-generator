@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Signature Generator</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&family=Dancing+Script&family=Allura&family=Satisfy&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Signature Generator</h1>
+
+    <p class="subtitle">
+    Generate elegant handwritten signatures instantly
+</p>
+
+    <div class="input-section">
+
+        <input
+            type="text"
+            id="nameInput"
+            placeholder="Enter your name">
+
+        <button onclick="generateSignature()">
+            Generate
+        </button>
+
+    </div>
+
+    <div class="signature-container">
+
+        <div
+            id="signatureBox"
+            class="signature-box">
+        </div>
+
+        <div class="action-buttons">
+
+            <button onclick="regenerateSignature()">
+                Regenerate
+            </button>
+
+            <button onclick="downloadCurrentSignature()">
+                Download
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>

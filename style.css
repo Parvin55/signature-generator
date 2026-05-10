@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(135deg, #f5f7fa, #dfe9f3);
+
+    font-family: Arial, sans-serif;
+
+    padding: 20px;
+}
+
+.container {
+
+    width: 100%;
+    max-width: 700px;
+
+    backdrop-filter: blur(14px);
+
+    border-radius: 24px;
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    background: transparent;
+
+box-shadow: none;
+}
+
+h1 {
+
+    font-size: 42px;
+
+    color: #111;
+
+    margin-bottom: 12px;
+}
+
+.subtitle {
+
+    color: #555;
+
+    margin-bottom: 35px;
+
+    font-size: 15px;
+}
+
+.input-section {
+
+    display: flex;
+    gap: 12px;
+
+    justify-content: center;
+
+    margin-bottom: 40px;
+
+    flex-wrap: wrap;
+}
+
+input {
+
+    flex: 1;
+
+    min-width: 250px;
+
+    padding: 14px 18px;
+
+    border-radius: 14px;
+
+    border: none;
+
+    outline: none;
+
+    font-size: 16px;
+
+    background: rgba(255,255,255,0.7);
+
+    box-shadow:
+        inset 0 1px 4px rgba(0,0,0,0.08);
+}
+
+button {
+
+    padding: 14px 22px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #111;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+button:hover {
+
+    transform: translateY(-2px);
+
+    background: #222;
+}
+
+.signature-container {
+
+    margin-top: 20px;
+}
+
+.signature-box {
+
+    min-height: 220px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.5);
+
+    box-shadow:
+        inset 0 1px 10px rgba(255,255,255,0.4);
+
+    padding: 20px;
+}
+
+.signature-line {
+
+    position: absolute;
+
+    bottom: 50px;
+
+    width: 60%;
+
+    height: 2px;
+
+    background: rgba(0,0,0,0.15);
+
+    border-radius: 50%;
+}
+
+.action-buttons {
+
+    margin-top: 25px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .container {
+
+        padding: 30px 20px;
+    }
+
+    h1 {
+
+        font-size: 32px;
+    }
+
+    .signature-box {
+
+        min-height: 180px;
+    }
+
+    input {
+
+        width: 100%;
+    }
+
+    button {
+
+        width: 100%;
+    }
+
+    .action-buttons {
+
+        flex-direction: column;
+    }
+}
