@@ -141,3 +141,140 @@ function downloadCurrentSignature() {
         link.click();
     });
 }
+
+const canvas =
+    document.getElementById("signatureCanvas");
+
+const ctx =
+    canvas.getContext("2d");
+
+canvas.width = 600;
+canvas.height = 220;
+
+let drawing = false;
+
+// PEN STYLE
+
+ctx.lineWidth = 2.5;
+
+ctx.lineCap = "round";
+
+ctx.strokeStyle = "#111";
+
+// START DRAW
+
+function startPosition(e) {
+
+    drawing = true;
+
+    draw(e);
+}
+
+// END DRAW
+
+function endPosition() {
+
+    drawing = false;
+
+    ctx.beginPath();
+}
+
+// DRAW FUNCTION
+
+function draw(e) {
+
+    if (!drawing) return;
+
+    const rect =
+        canvas.getBoundingClientRect();
+
+    const x =
+        e.clientX - rect.left;
+
+    const y =
+        e.clientY - rect.top;
+
+    ctx.lineTo(x, y);
+
+    ctx.stroke();
+
+    ctx.beginPath();
+
+    ctx.moveTo(x, y);
+}
+
+// MOUSE EVENTS
+
+canvas.addEventListener(
+    "mousedown",
+    startPosition
+);
+
+canvas.addEventListener(
+    "mouseup",
+    endPosition
+);
+
+canvas.addEventListener(
+    "mousemove",
+    draw
+);
+
+// TOUCH EVENTS
+
+canvas.addEventListener(
+    "touchstart",
+    (e) => {
+
+        e.preventDefault();
+
+        const touch = e.touches[0];
+
+        startPosition(touch);
+    }
+);
+
+canvas.addEventListener(
+    "touchend",
+    endPosition
+);
+
+canvas.addEventListener(
+    "touchmove",
+    (e) => {
+
+        e.preventDefault();
+
+        const touch = e.touches[0];
+
+        draw(touch);
+    }
+);
+
+// CLEAR
+
+function clearCanvas() {
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+}
+
+// DOWNLOAD
+
+function downloadDrawnSignature() {
+
+    const link =
+        document.createElement("a");
+
+    link.download =
+        "drawn-signature.png";
+
+    link.href =
+        canvas.toDataURL("image/png");
+
+    link.click();
+}
