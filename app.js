@@ -94,15 +94,17 @@ function showRandomSignature(name) {
         scale(${randomScale})
         `;
 
-    sig.style.color = "#111";
+sig.style.color = "#000000";
 
-    sig.style.display = "inline-block";
+sig.style.opacity = "1";
 
-    sig.style.padding = "20px";
+sig.style.fontWeight = "900";
 
-    sig.style.background = "transparent";
+sig.style.webkitTextStroke = "0.4px #000";
 
-    sig.style.userSelect = "none";
+sig.style.textShadow = "0 0 1px #000";
+
+sig.style.filter = "none";
 
     // APPEND
 
@@ -122,11 +124,25 @@ function downloadCurrentSignature() {
         return;
     }
 
+    // CREATE TEMP WHITE BACKGROUND
+
+    const originalBackground =
+        currentSignature.style.background;
+
+    const originalColor =
+        currentSignature.style.color;
+
+    currentSignature.style.background = "#ffffff";
+
+    currentSignature.style.color = "#000000";
+
     html2canvas(currentSignature, {
 
-        backgroundColor: null,
+        backgroundColor: "#ffffff",
 
-        scale: 6
+        scale: 8,
+
+        useCORS: true
 
     }).then(canvas => {
 
@@ -139,9 +155,16 @@ function downloadCurrentSignature() {
             canvas.toDataURL("image/png");
 
         link.click();
+
+        // RESTORE ORIGINAL UI
+
+        currentSignature.style.background =
+            originalBackground;
+
+        currentSignature.style.color =
+            originalColor;
     });
 }
-
 const canvas =
     document.getElementById("signatureCanvas");
 
@@ -159,7 +182,11 @@ ctx.lineWidth = 2.5;
 
 ctx.lineCap = "round";
 
-ctx.strokeStyle = "#111";
+ctx.strokeStyle = "#000";
+
+ctx.globalAlpha = 1;
+
+ctx.lineJoin = "round";
 
 // START DRAW
 
